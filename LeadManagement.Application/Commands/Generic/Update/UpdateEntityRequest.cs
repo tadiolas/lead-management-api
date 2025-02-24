@@ -1,5 +1,4 @@
-﻿using LeadManagement.Domain.Interfaces;
-using MediatR;
+﻿using MediatR;
 
 namespace LeadManagement.Application.Commands.Generic.Update
 {

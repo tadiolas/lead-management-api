@@ -18,21 +18,21 @@ namespace LeadManagement.API.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<BaseResponse<T>>> Create([FromBody] T entity)
+        public virtual async Task<ActionResult<BaseResponse<T>>> Create([FromBody] T entity)
         {
             await _sender.Send(new CreateEntityRequest<T>(entity));
             return Ok(new BaseResponse<bool> { Data = true });
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<BaseResponse<T>>> Update([FromRoute] int id, [FromBody] T entity)
+        public virtual async Task<ActionResult<BaseResponse<T>>> Update([FromRoute] int id, [FromBody] T entity)
         {
             await _sender.Send(new UpdateEntityRequest<T>(id, entity));
             return Ok(new BaseResponse<bool> { Data = true });
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<BaseResponse<T>>> Delete([FromRoute] int id)
+        public virtual async Task<ActionResult<BaseResponse<T>>> Delete([FromRoute] int id)
         {
             await _sender.Send(new DeleteEntityRequest<T>(id));
             return Ok(new BaseResponse<bool> { Data = true });
